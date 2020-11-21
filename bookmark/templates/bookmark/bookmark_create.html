@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title%}Bookmark Add{% endblock %}
+{% block content %}
+<!-- action 은 form 에서 입력받은 내용을 어떤 페이지로 보내줄거냐 하는 것이고 -->
+<!-- method 는 입력받은 내용을 어떤 형태로 전해줄 것이냐 하는 것이다. -->
+<!-- django 에서는 action 을 비워두는 경우가 더 많다. 입력받는 것과 입력받은것을 처리하는 것을 같은 뷰에서 처리하는 경우가 많기 때문이다. 비워두면 자기자신 -->
+<!-- method 에서 입력할 때에는 get 방식으로 접근하고 입력이 완료되면 post 방식으로 접근을 하게 되니까 이 코드를 통해서 서버쪽 장고에서 구분을 할 수 있다. -->
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add" class="btn btn-info btn-sm">
+</form>
+{% endblock %}

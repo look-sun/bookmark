@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title%}Bookmark List{% endblock %}
+{% block content %}
+<div class="btn-group">
+       <a href="{% url 'add' %}" class="btn btn-info">Add Bookmark</a>
+</div>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">SITE</th>
+            <th scope="col">URL</th>
+            <th scope="col">MODIFY</th>
+            <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 기본적으로 값이 여러 개 일때는 object_list로 값을 주고 한 개 일때는 object로 준다. -->
+        {% for bookmark in object_list %} <!-- 앞에있는 태그는 기능 태그이다. -->
+            <tr>
+                <!-- 밑의 태그는 출력이다. -->
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url 'detail' pk=bookmark.id %}">{{bookmark.site_name}}</a></td>
+                <td><a href="{{bookmark.site_url}}" target="_blank">{{bookmark.site_url}}</a></td>
+                <td><a href="{% url 'update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a href="{% url 'delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

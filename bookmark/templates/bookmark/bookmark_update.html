@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title%}Bookmark Add{% endblock %}
+{% block content %}
+    <form action="" method="post">  <!-- get 방식은 주소에 포함이 되서 넘어가기 때문에 보안이 안된다. 그래서 post 를 사용한다. -->
+        {% csrf_token %}    <!-- csrf 공격 보안을 위한 토큰이다. -->
+        {{form.as_p}}
+        <input type="submit" value="Update" class="btn btn-info bn-sm">
+    </form>
+{% endblock %}
